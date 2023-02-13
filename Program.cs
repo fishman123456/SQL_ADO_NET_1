@@ -1,4 +1,4 @@
-﻿//using Microsoft.Data.Sql;
+﻿
 using Microsoft.Data.SqlClient;
 
 //SqlConnection conn = null;
@@ -8,10 +8,20 @@ SqlConnection conn = new SqlConnection(sqlSourse);
 
 conn.Open();
 //Console.WriteLine("Введите имя автора");
+//string select = @"select* from Authors ";
+//string insertString = @"insert into Authors Values ('44','ff')";
+string insertString = @"insert into Books Values (1,'war',55,455)";
 
-string insertString = @"insert into Authors Values ('44','ff')";
+//SqlCommand insertdata = new SqlCommand(insertString, conn);
 
-SqlCommand insertdata = new SqlCommand(insertString, conn);
-insertdata.ExecuteNonQuery();
+SqlCommand comm = new SqlCommand(insertString, conn);
 
-conn.Close();
+SqlDataReader reader = comm.ExecuteReader();
+
+//insertdata.ExecuteNonQuery();
+//string select = @"select* from Books ";
+//SqlCommand cmd = new SqlCommand(select, conn);
+ Console.WriteLine(" ");
+
+    conn.Close();
+
