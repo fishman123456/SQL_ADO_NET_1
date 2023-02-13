@@ -2,26 +2,35 @@
 using Microsoft.Data.SqlClient;
 
 //SqlConnection conn = null;
-string sqlSourse  = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Library; Integrated Security=true;";
-//Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = master; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = False; ApplicationIntent = ReadWrite; MultiSubnetFailover = False
+//создание строки для соединения с сервером
+string sqlSourse = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Library; Integrated Security=true;";
+
+// передача строки для открытия соединения
 SqlConnection conn = new SqlConnection(sqlSourse);
 
+// открытие соединения
 conn.Open();
+
 //Console.WriteLine("Введите имя автора");
 //string select = @"select* from Authors ";
+
+// создание запроса, добавляем данные
 //string insertString = @"insert into Authors Values ('44','ff')";
 string insertString = @"insert into Books Values (1,'war',55,455)";
 
-//SqlCommand insertdata = new SqlCommand(insertString, conn);
+// создаём команду (запрос, строка соединения с базой данных)
+SqlCommand insertdata = new SqlCommand(insertString, conn);
 
-SqlCommand comm = new SqlCommand(insertString, conn);
+//SqlCommand comm = new SqlCommand(insertString, conn);
+//SqlDataReader reader = comm.ExecuteReader();
 
-SqlDataReader reader = comm.ExecuteReader();
+// выполняем комманду
+insertdata.ExecuteNonQuery();
 
-//insertdata.ExecuteNonQuery();
 //string select = @"select* from Books ";
 //SqlCommand cmd = new SqlCommand(select, conn);
- Console.WriteLine(" ");
+//Console.WriteLine(" ");
 
-    conn.Close();
+// закрываем соединение
+conn.Close();
 
