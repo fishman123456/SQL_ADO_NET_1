@@ -24,7 +24,11 @@ SqlCommand insertdata = new SqlCommand(insertString, conn);
 //SqlCommand comm = new SqlCommand(insertString, conn);
 //SqlDataReader reader = comm.ExecuteReader();
 
-// выполняем комманду
+// выполняем комманду 
+//ExecuteNonQuery() преднзначен для выполнения
+//запросов insert, update и delete. Этот метод возвращает
+//количество обработанных запросом строк в таблице, хотя
+//этим возвращаемым значением чаще всего пренебрегают.
 insertdata.ExecuteNonQuery();
 
 //string select = @"select* from Books ";
